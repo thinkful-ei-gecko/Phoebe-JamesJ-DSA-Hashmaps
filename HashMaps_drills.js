@@ -1,10 +1,9 @@
 //1.
 const HashMap = require('./HashMap')
+const HashMapSepChain = require('./HashMapSepChain')
 
 function main() {
   const lor = new HashMap()
-  // lor.MAX_LOAD_RATIO = 0.5;
-  // lor.SIZE_RATIO = 3;
 
   lor.set('Hobbit', 'Bilbo')
   lor.set('Hobbit', 'Frodo')
@@ -153,3 +152,32 @@ function simpleAnagram(arr) {
 }
 
 console.log(simpleAnagram(testArray))
+
+//7. Separate Chaining
+function mainForSepChain() {
+  const lor = new HashMapSepChain()
+
+  lor.set('Hobbit', 'Bilbo')
+  lor.set('Hobbit', 'Frodo')
+  lor.set('Wizard', 'Gandolf')
+  lor.set('Human', 'Aragon')
+  lor.set('Elf', 'Legolas')
+  lor.set('Maiar', 'The Necromancer')
+  lor.set('Maiar', 'Sauron')
+  lor.set('Ringbearer', 'Gollum')
+  lor.set('LadyOfLight', 'Galadriel')
+  lor.set('HalfElven', 'Arwen')
+  lor.set('Ent', 'Treebeard')
+
+  console.log(JSON.stringify(lor))
+
+  // Print your hash map and notice the length and items that are hashed in your hash map. Have you hashed all the items you were asked to?
+  // Yes
+
+  // console.log(JSON.stringify(lor.get('Maiar'))); //Sauron
+  // console.log(JSON.stringify(lor.get('Hobbit'))); //Frodo
+  // Yes, there is a discrepancy because we have two values for key Maiar and Hobbit and it's only returning one for each (last instance inserted). Since they share the key name instead of adding a new item to the hash map, it's updating the value for the key.
+  // Capacity after hashing is 24 because if the hash map's capacity exceeds 50% (4th set) it increases in capacity from 8 to 24 (threefold)
+}
+
+mainForSepChain()
