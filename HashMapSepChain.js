@@ -14,7 +14,7 @@ class HashMapSepChain {
 		return this._hashTable[index];
 	}
 
-	set(key, value) {
+	set(key, value, next=null) {
 		const loadRatio = (this.length + this._deleted + 1) / this._capacity;
 		if (loadRatio > HashMapSepChain.MAX_LOAD_RATIO) {
 			this._resize(this._capacity * HashMapSepChain.SIZE_RATIO);
@@ -27,11 +27,10 @@ class HashMapSepChain {
 			this._hashTable[index] = {
 				key,
 				value,
-				next: null,
+				next,
 				DELETED: false
 			};
 		} else {
-      this.length++;
       let temp = this._hashTable[index];
       console.log(this._hashTable[index])
       while(this._hashTable[index].next !== null) {
@@ -39,7 +38,7 @@ class HashMapSepChain {
       }
       temp.next = {
 				value,
-				next: null,
+				next,
 				DELETED: false
 			}
     }
@@ -79,7 +78,7 @@ class HashMapSepChain {
 
 		for (const slot of oldSlots) {
 			if (slot !== undefined && !slot.DELETED) {
-				this.set(slot.key, slot.value);
+				this.set(slot.key, slot.value, slot.next);
 			}
 		}
 	}

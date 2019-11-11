@@ -17,7 +17,7 @@ function main() {
   lor.set('HalfElven', 'Arwen')
   lor.set('Ent', 'Treebeard')
 
-  // console.log(JSON.stringify(lor))
+  console.log(JSON.stringify(lor))
 
   // Print your hash map and notice the length and items that are hashed in your hash map. Have you hashed all the items you were asked to?
   // Yes
@@ -28,7 +28,7 @@ function main() {
   // Capacity after hashing is 24 because if the hash map's capacity exceeds 50% (4th set) it increases in capacity from 8 to 24 (threefold)
 }
 
-// main()
+main()
 
 //2.
 // console.log(map1.get(str1)); // 20
